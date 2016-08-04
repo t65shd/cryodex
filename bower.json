@@ -1,0 +1,29 @@
+{
+  "name": "rendili-cryodex",
+  "authors": [
+    "Rendili <sean@rendili.co.uk>"
+  ],
+  "description": "Rendili Cryodex - Dashboard Widgets",
+  "main": [
+    "js/jquery.cryodex.js",
+    "css/jquery.cryodex.css"
+  ],
+  "keywords": [
+    "Dashboard",
+    "jQuery",
+    "chart.js"
+  ],
+  "license": "MIT",
+  "homepage": "http://cryodex.rendili.co.uk",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">= 2.1.0"
+  }
+}

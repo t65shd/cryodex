@@ -1,0 +1,14 @@
+[data-cryodex-widget] {
+	position: relative;
+	&[data-cryodex-wiget=gauge] label {
+		content: attr(data-value);
+		position: absolute;
+		top: 50%; left: 50%;
+		text-align: center;
+		transform: translate(-50%, -50%);
+		font-size: 2rem;
+		font-weight: bold;
+		line-height: 1.2;
+		span { font-size: 1rem; font-weight: normal; display: block; }
+	}
+}
