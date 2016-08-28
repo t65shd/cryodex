@@ -4,7 +4,8 @@
   "description": "Rendili Cryodex - Dashboard Widgets",
   "main": "js/jquery.cryodex.js",
   "scripts": {
-    "start": "gulp build"
+    "start": "gulp build",
+    "watch": "gulp watch"
   },
   "author": "Rendili Limited <sean@rendili.co.uk>",
   "license": "MIT",

@@ -12,6 +12,12 @@ var sequence = require('run-sequence');
 var cleanCSS = require('gulp-clean-css');
 
 var paths = {
+	sass: [
+		'bower_components/foundation-sites/scss',
+		'bower_components/motion-ui/src',
+		'bower_components/font-awesome/scss',
+		'bower_components/weather-icons/sass'
+	],
 	javascript: [
 		'./js/jquery.cryodex.js'
 	],
@@ -25,12 +31,12 @@ gulp.task('sass', function () {
 	var minifycss = cleanCSS({ compatibility: 'ie8' });
 
 	gulp.src(paths.scss)
-		.pipe($.sass())
+		.pipe($.sass({ includePaths: paths.sass }))
 		.pipe($.autoprefixer({ browsers: COMPATIBILITY }))
 		.pipe(gulp.dest("./css"));
 
 	gulp.src(paths.scss)
-		.pipe($.sass())
+		.pipe($.sass({ includePaths: paths.sass }))
 		.pipe($.autoprefixer({ browsers: COMPATIBILITY }))
 		.pipe(minifycss)
 		.pipe($.rename({ suffix: '.min' }))
@@ -60,6 +66,18 @@ gulp.task('javascript', function () {
 // Runs copy then runs sass & javascript in parallel
 gulp.task('build', function (done) {
 	sequence(['sass', 'javascript'], done);
+});
+
+gulp.task('watch', ['build'], function (done) {
+	sequence(['sass:watch', 'javascript:watch'], done);
+});
+
+gulp.task('sass:watch', function (done) {
+	gulp.watch('./scss/*.scss', ['sass']);
+});
+
+gulp.task('javascript:watch', function (done) {
+	gulp.watch('./js/jquery.cryodex.js', ['javascript']);
 });
 
 // Default

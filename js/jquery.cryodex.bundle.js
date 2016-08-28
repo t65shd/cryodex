@@ -14592,17 +14592,31 @@ module.exports = function(Chart) {
 ; (function ($, window, document, undefined) {
 	var pluginName = "cryodex",
 		defaults = {
-			baseColors: { base1: '#666', base2: '#888', base3: '#aaa', base4: '#ccc' },
-			colors: {}
+			baseColors: {
+				first: '#1abc9c',
+				second: '#e74c3c',
+				third: '#3498db',
+				fourth: '#9b59b6',
+				fifth: '#34495e',
+				sixth: '#2ecc71',
+				seventh: '#e67e22',
+				eighth: '#f1c40f',
+				ninth: '#7f8c8d',
+				tenth: '#d35400' 
+			}
 		};
 
 	function Cryodex(element, options) {
 		this.element = element;
 
+		defaults.colors = defaults.baseColors;
+
 		this.options = $.extend({}, defaults, options);
 
 		this._defaults = defaults;
 		this._name = pluginName;
+
+		this._counter = 0 ;
 
 		this.init();
 	}
@@ -14627,10 +14641,11 @@ module.exports = function(Chart) {
 		},
 
 		_getColor: function(color) {
-			if (typeof (this.options.baseColors[color]) != 'undefined') {
-				color = this.options.baseColors[color];
-			}
-			if (typeof (this.options.colors[color]) != 'undefined') {
+			if (typeof (color) == 'undefined' || color == '') {
+				color = this.options.colors[Object.keys(this.options.colors)[this._counter % Object.keys(this.options.colors).length]];
+			} else if (typeof (this._defaults.baseColors[color]) != 'undefined') {
+				color = this._defaults.baseColors[color];
+			} else if (typeof (this.options.colors[color]) != 'undefined') {
 				color = this.options.colors[color];
 			}
 			return color;
@@ -14659,6 +14674,8 @@ module.exports = function(Chart) {
 		},
 
 		_gauge: function () {
+			this._counter = 0;
+
 			var value1 = $(this.element).attr('data-percent') * 0.75;
 			var value2 = 75 - value1;
 			var color = this._getColor($(this.element).attr('data-color'));
@@ -14696,6 +14713,7 @@ module.exports = function(Chart) {
 
 		_doughnut: function () {
 			var base = this;
+			base._counter = 0;
 
 			var table = $('table', this.element).eq(0).hide();
 
@@ -14713,6 +14731,7 @@ module.exports = function(Chart) {
 				$('td', this).each(function () {
 					dataset_item.data.push($(this).text());
 					dataset_item.backgroundColor.push(base._getColor($(this).attr('data-color')));
+					base._counter ++;
 				});
 				dataset_item.borderWidth = 0;
 				datasets.push(dataset_item);
@@ -14732,6 +14751,7 @@ module.exports = function(Chart) {
 
 		_bar: function () {
 			var base = this;
+			base._counter = 0;
 
 			var table = $('table', this.element).eq(0).hide();
 
@@ -14749,6 +14769,7 @@ module.exports = function(Chart) {
 				$('td', this).each(function () {
 					dataset_item.data.push($(this).text());
 					dataset_item.backgroundColor.push(base._getColor($(this).attr('data-color')));
+					base._counter ++;
 				});
 				dataset_item.borderWidth = 0;
 				datasets.push(dataset_item);
@@ -14770,6 +14791,7 @@ module.exports = function(Chart) {
 
 		_line: function () {
 			var base = this;
+			base._counter = 0;
 
 			var table = $('table', this.element).eq(0).hide();
 
@@ -14797,6 +14819,7 @@ module.exports = function(Chart) {
 					dataset_item.data.push($(this).text());
 				});
 				datasets.push(dataset_item);
+				base._counter ++;
 			});
 
 			$(this.element).append('<canvas />');

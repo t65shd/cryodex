@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+		<meta charset="utf-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<title>Cryodex Sample</title>
+		<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="../bower_components/foundation-sites/dist/foundation.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.cryodex.bundle.min.js"></script>
+		<link rel="stylesheet" href="../bower_components/foundation-sites/dist/foundation.min.css">
+		<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css">
+		<link rel="stylesheet" href="../bower_components/weather-icons/css/weather-icons.min.css">
+		<link rel="stylesheet" href="../css/jquery.cryodex.min.css">
+	</head>
+	<body>
+		<div class="row">
+			<div class="small-12 columns">
+				<h1>Cryodex sample items</h1>
+			</div>
+		</div>
+		<div class="row" data-equalizer data-equalize-on="medium">
+			<div class="small-12 columns">
+				<h2 class="text-center">Dashboard</h2>
+			</div>
+			<div class="small-12 medium-6 large-3 columns">
+				<div class="cryodex-stat third" data-equalizer-watch>
+					<div class="cryodex-icon fa-shopping-cart"></div> 
+					<div class="cryodex-data">Sales <div><span class="cryodex-negative">&pound;2,504.72</span></div></div>
+				</div>
+			</div>
+			<div class="small-12 medium-6 large-3 columns">
+				<div class="cryodex-stat second" data-equalizer-watch>
+					<div class="cryodex-icon fa-download"></div> 
+					<div class="cryodex-data">Downloads <div><span class="small">8,194</span></div></div>
+				</div>
+			</div>
+			<div class="small-12 medium-6 large-3 columns">
+				<div class="cryodex-stat first" data-equalizer-watch>
+					<div class="cryodex-icon fa-users"></div> 
+					<div class="cryodex-data">New users <div><span class="cryodex-positive">200</span></div></div>
+				</div>
+			</div>
+			<div class="small-12 medium-6 large-3 columns">
+				<div class="cryodex-stat eighth" data-equalizer-watch>
+					<div class="cryodex-icon weather wi-day-cloudy"></div> 
+					<div class="cryodex-data">Sunny spells <div><span class="small">0% precip.</span></div></div>
+				</div>
+			</div>
+			<div class="small-12 medium-6 large-3 columns">
+				<div class="cryodex-panel" data-equalizer-watch>
+					<h3>Notices</h3>
+					<div class="callout alert">23 overdue report forms</div>
+				</div>
+			</div>
+			<div class="small-12 medium-6 large-3 columns">
+				<div class="cryodex-panel" data-equalizer-watch>
+					<h3>Detail</h3>
+					<div data-cryodex-widget="gauge" data-percent="60" data-color="third">
+						<label>2,600 <span>4,333</span></label>
+					</div>
+				</div>
+			</div>
+			<div class="small-12 medium-6 large-3 columns">
+				<div class="cryodex-panel" data-equalizer-watch>
+					<h3>Growth</h3>
+					<div data-cryodex-widget="gauge" data-percent="60" data-color="third">
+						<label class="fa fa-line-chart"></label>
+						<label>60%</label>
+					</div>
+				</div>
+			</div>
+			<div class="small-12 medium-6 large-3 columns">
+				<div class="cryodex-panel" data-equalizer-watch>
+					<h3>Detail</h3>
+					<div data-cryodex-widget="gauge" data-percent="82" data-color="second">
+						<label>82%</label>
+					</div>
+				</div>
+			</div>
+			<div class="small-12 medium-6 large-3 columns text-center">
+				<a href="#" class="cryodex-icon first fa-bar-chart">Stat 1</a>
+				<a href="#" class="cryodex-icon second fa-pie-chart">Stat 2</a>
+				<a href="#" class="cryodex-icon third fa-microphone">Record</a>
+				<a href="#" class="cryodex-icon fourth fa-download">Download</a>
+				<a href="#" class="cryodex-icon fifth fa-shopping-cart">Sales</a>
+				<a href="#" class="cryodex-icon sixth fa-calendar">Calendar</a>
+				<a href="#" class="cryodex-icon seventh fa-cog">Settings</a>
+				<a href="#" class="cryodex-icon eighth fa-camera">Camera</a>
+				<a href="#" class="cryodex-icon ninth fa-database">Database</a>
+				<a href="#" class="cryodex-icon tenth fa-cloud">Cloud</a>
+			</div>
+			<div class="small-12 medium-12 large-6 columns">
+				<div class="cryodex-panel" data-equalizer-watch>
+					<h3>Sites</h3>
+					<div data-cryodex-widget="bar">
+						<table>
+							<thead>
+								<tr>
+									<th>North East</th>
+									<th>North West</th>
+									<th>Sctoland</th>
+									<th>Midlands</th>
+									<th>South East</th>
+									<th>South West</th>
+									<th>London</th>
+									<th>Wales</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-label="Sites">
+									<td>200</td>
+									<td>99</td>
+									<td>320</td>
+									<td>76</td>
+									<td>200</td>
+									<td>99</td>
+									<td>320</td>
+									<td>76</td>
+								</tr>
+								<tr data-label="Sites 2">
+									<td data-color="tenth">76</td>
+									<td data-color="ninth">200</td>
+									<td data-color="seventh">99</td>
+									<td data-color="sixth">320</td>
+									<td data-color="third">50</td>
+									<td data-color="fourth">10</td>
+									<td data-color="first">133</td>
+									<td data-color="second">205</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div data-cryodex-widget="line">
+						<table>
+							<thead>
+								<tr>
+									<th>North East</th>
+									<th>North West</th>
+									<th>South</th>
+									<th>Midlands</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-label="Sites" data-fill>
+									<td>200</td>
+									<td>99</td>
+									<td>320</td>
+									<td>76</td>
+								</tr>
+								<tr data-label="Sites 2" data-fill>
+									<td>76</td>
+									<td>200</td>
+									<td>99</td>
+									<td>320</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="small-12 medium-3 columns">
+				<div class="cryodex-panel" data-equalizer-watch>
+					<h3>Patient progress</h3>
+					<div data-cryodex-widget="doughnut">
+						<table>
+							<thead>
+								<tr>
+									<th>Awaiting</th>
+									<th>3 Mth</th>
+									<th>12 Mth</th>
+									<th>Complete</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr data-label="Progress">
+									<td>22</td>
+									<td>11</td>
+									<td data-color="third">5</td>
+									<td data-color="fourth">3</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" data-equalizer data-equalize-on="medium">
+			<div class="small-12 columns">
+				<h2 class="text-center">Your overview</h2>
+			</div>
+			<div class="small-12 medium-6 columns">
+				<div class="cryodex-panel" data-equalizer-watch>
+					<h3>Patients</h3>
+					<ul class="no-bullet">
+						<li>Tony Stark</li>
+						<li>Natasha Romanova</li>
+						<li>Bruce Banner</li>
+						<li>Clint Barton</li>
+						<li>Steve Rogers</li>
+					</ul>
+				</div>
+			</div>
+			<div class="small-12 medium-6 columns">
+				<div class="cryodex-panel" data-equalizer-watch>
+					<h3>Manage study</h3>
+					<ul class="no-bullet">
+						<li>Add new patient</li>
+						<li>Add new site</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(window).foundation();
+			$(document).cryodex(); /*{
+				colors: {
+					first: '#25BA9C',
+					second: '#3C93E0',
+					third: '#9B58B7',
+					fourth: '#BFC4C8'
+				}
+			});*/
+		</script>
+	</body>
+</html>
