@@ -31,12 +31,12 @@ gulp.task('sass', function () {
 	var minifycss = cleanCSS({ compatibility: 'ie8' });
 
 	gulp.src(paths.scss)
-		.pipe($.sass({ includePaths: paths.sass }))
+		.pipe($.sass({ includePaths: paths.sass }).on('error', $.sass.logError))
 		.pipe($.autoprefixer({ browsers: COMPATIBILITY }))
 		.pipe(gulp.dest("./css"));
 
 	gulp.src(paths.scss)
-		.pipe($.sass({ includePaths: paths.sass }))
+		.pipe($.sass({ includePaths: paths.sass }).on('error', $.sass.logError))
 		.pipe($.autoprefixer({ browsers: COMPATIBILITY }))
 		.pipe(minifycss)
 		.pipe($.rename({ suffix: '.min' }))

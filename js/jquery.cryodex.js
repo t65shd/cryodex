@@ -46,6 +46,9 @@
 				case 'line':
 					this._line();
 					break;
+				case 'progress':
+					this._progress();
+					break;
 			}
 		},
 
@@ -115,7 +118,8 @@
 					legend: { display: false },
 					tooltips: { enabled: false },
 					cutoutPercentage: 70,
-					rotation: 0.75 * Math.PI
+					rotation: 0.75 * Math.PI,
+					onClick: window[$(this.element).attr('data-click')]
 				}
 			});
 		},
@@ -145,16 +149,24 @@
 				dataset_item.borderWidth = 0;
 				datasets.push(dataset_item);
 			});
+			var legend = { position: 'left' };
+			if ($(this.element).attr('data-legend-click')) {
+				legend.onClick = window[$(this.element).attr('data-legend-click')];
+			}
 
 			$(this.element).append('<canvas />');
 			this.chart = new Chart($('canvas', this.element), {
 				type: 'doughnut',
 				responsive: true,
+				
 				data: {
 					labels: labels,
 					datasets: datasets
 				},
-				options: { legend: { position: 'left' } }
+				options: {
+					legend: legend,
+					onClick: window[$(this.element).attr('data-click')]
+				}
 			});
 		},
 
@@ -184,6 +196,7 @@
 				datasets.push(dataset_item);
 			});
 
+			console.log(window[$(this.element).attr('data-click')]);
 			$(this.element).append('<canvas />');
 			this.chart = new Chart($('canvas', this.element), {
 				type: 'bar',
@@ -193,7 +206,8 @@
 					datasets: datasets
 				},
 				options: {
-					legend: { display: false }
+					legend: { display: false },
+					onClick: window[$(this.element).attr('data-click')]
 				}
 			});
 		},
@@ -242,9 +256,14 @@
 				options: {
 					legend: { display: false },
 					tooltips: { mode: 'x-axis' },
-					hover: { mode: 'x-axis' }
+					hover: { mode: 'x-axis' },
+					onClick: window[$(this.element).attr('data-click')]
 				}
 			});
+		},
+
+		_progress: function() {
+			$(this).addClass('cryodex-loaded');
 		}
 	};
 

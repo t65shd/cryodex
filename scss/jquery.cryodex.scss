@@ -1,6 +1,7 @@
 $cryodex-panel-padding: 0.5rem !default;
 $cryodex-panel-border: #ccc !default;
 $cryodex-panel-background: #fcfcfc !default;
+$cryodex-progress-background: #ccc !default;
 
 $cryodex-stat-styles: (
 	first: #1abc9c,
@@ -125,7 +126,6 @@ a.cryodex-icon:hover { color: white; }
 	}
 }
 
-
 [data-cryodex-widget] {
 	position: relative;
 	max-width: $cryodex-widget-max-width;
@@ -174,4 +174,31 @@ a.cryodex-icon:hover { color: white; }
 
 .cryodex-negative:after {
 	content: $fa-var-arrow-down;
+}
+
+[data-cryodex-widget="progress"] {
+	max-width: 100%; background: $cryodex-progress-background; margin-bottom: 0.8rem; text-align: center; text-indent: -9999px;
+	&.small { font-size: 0.8rem; }
+	&.large { font-size: 1.4rem; }
+	&.xlarge { font-size: 2.2rem; }
+
+	&:before {
+		position: absolute; top: 0; left: 0; bottom: 0; background: #777; content: ""; width: 0;
+		transition: all 650ms ease-in;
+	}
+	&:after { position: absolute; top: 0; left: 0; right: 0; text-align: center; content: attr(data-value); text-indent: 0; }
+	
+	// Colors
+	@each $name, $color in $cryodex-stat-styles {
+		&.#{$name}:before {
+			background: $color;
+			&:hover { background: darken($color, 20); }
+		}
+	}
+
+	@for $width from 0 to 101 {
+		&.cryodex-loaded[data-percent="#{$width}"]:before {
+			width: $width * 1%;
+		}
+	}
 }

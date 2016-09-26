@@ -5049,3 +5049,275 @@ a.cryodex-icon:hover {
 
 .cryodex-negative:after {
   content: ""; }
+
+[data-cryodex-widget="progress"] {
+  max-width: 100%;
+  background: #ccc;
+  margin-bottom: 0.8rem;
+  text-align: center;
+  text-indent: -9999px; }
+  [data-cryodex-widget="progress"].small {
+    font-size: 0.8rem; }
+  [data-cryodex-widget="progress"].large {
+    font-size: 1.4rem; }
+  [data-cryodex-widget="progress"].xlarge {
+    font-size: 2.2rem; }
+  [data-cryodex-widget="progress"]:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: #777;
+    content: "";
+    width: 0;
+    transition: all 650ms ease-in; }
+  [data-cryodex-widget="progress"]:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    content: attr(data-value);
+    text-indent: 0; }
+  [data-cryodex-widget="progress"].first:before {
+    background: #1abc9c; }
+    [data-cryodex-widget="progress"].first:before:hover {
+      background: #0e6252; }
+  [data-cryodex-widget="progress"].second:before {
+    background: #e74c3c; }
+    [data-cryodex-widget="progress"].second:before:hover {
+      background: #a82315; }
+  [data-cryodex-widget="progress"].third:before {
+    background: #3498db; }
+    [data-cryodex-widget="progress"].third:before:hover {
+      background: #196090; }
+  [data-cryodex-widget="progress"].fourth:before {
+    background: #9b59b6; }
+    [data-cryodex-widget="progress"].fourth:before:hover {
+      background: #623475; }
+  [data-cryodex-widget="progress"].fifth:before {
+    background: #34495e; }
+    [data-cryodex-widget="progress"].fifth:before:hover {
+      background: #10161c; }
+  [data-cryodex-widget="progress"].sixth:before {
+    background: #2ecc71; }
+    [data-cryodex-widget="progress"].sixth:before:hover {
+      background: #1b7943; }
+  [data-cryodex-widget="progress"].seventh:before {
+    background: #e67e22; }
+    [data-cryodex-widget="progress"].seventh:before:hover {
+      background: #924d10; }
+  [data-cryodex-widget="progress"].eighth:before {
+    background: #f1c40f; }
+    [data-cryodex-widget="progress"].eighth:before:hover {
+      background: #927608; }
+  [data-cryodex-widget="progress"].ninth:before {
+    background: #7f8c8d; }
+    [data-cryodex-widget="progress"].ninth:before:hover {
+      background: #4e5758; }
+  [data-cryodex-widget="progress"].tenth:before {
+    background: #d35400; }
+    [data-cryodex-widget="progress"].tenth:before:hover {
+      background: #6d2b00; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="0"]:before {
+    width: 0%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="1"]:before {
+    width: 1%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="2"]:before {
+    width: 2%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="3"]:before {
+    width: 3%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="4"]:before {
+    width: 4%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="5"]:before {
+    width: 5%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="6"]:before {
+    width: 6%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="7"]:before {
+    width: 7%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="8"]:before {
+    width: 8%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="9"]:before {
+    width: 9%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="10"]:before {
+    width: 10%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="11"]:before {
+    width: 11%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="12"]:before {
+    width: 12%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="13"]:before {
+    width: 13%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="14"]:before {
+    width: 14%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="15"]:before {
+    width: 15%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="16"]:before {
+    width: 16%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="17"]:before {
+    width: 17%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="18"]:before {
+    width: 18%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="19"]:before {
+    width: 19%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="20"]:before {
+    width: 20%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="21"]:before {
+    width: 21%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="22"]:before {
+    width: 22%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="23"]:before {
+    width: 23%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="24"]:before {
+    width: 24%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="25"]:before {
+    width: 25%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="26"]:before {
+    width: 26%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="27"]:before {
+    width: 27%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="28"]:before {
+    width: 28%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="29"]:before {
+    width: 29%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="30"]:before {
+    width: 30%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="31"]:before {
+    width: 31%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="32"]:before {
+    width: 32%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="33"]:before {
+    width: 33%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="34"]:before {
+    width: 34%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="35"]:before {
+    width: 35%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="36"]:before {
+    width: 36%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="37"]:before {
+    width: 37%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="38"]:before {
+    width: 38%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="39"]:before {
+    width: 39%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="40"]:before {
+    width: 40%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="41"]:before {
+    width: 41%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="42"]:before {
+    width: 42%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="43"]:before {
+    width: 43%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="44"]:before {
+    width: 44%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="45"]:before {
+    width: 45%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="46"]:before {
+    width: 46%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="47"]:before {
+    width: 47%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="48"]:before {
+    width: 48%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="49"]:before {
+    width: 49%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="50"]:before {
+    width: 50%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="51"]:before {
+    width: 51%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="52"]:before {
+    width: 52%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="53"]:before {
+    width: 53%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="54"]:before {
+    width: 54%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="55"]:before {
+    width: 55%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="56"]:before {
+    width: 56%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="57"]:before {
+    width: 57%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="58"]:before {
+    width: 58%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="59"]:before {
+    width: 59%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="60"]:before {
+    width: 60%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="61"]:before {
+    width: 61%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="62"]:before {
+    width: 62%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="63"]:before {
+    width: 63%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="64"]:before {
+    width: 64%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="65"]:before {
+    width: 65%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="66"]:before {
+    width: 66%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="67"]:before {
+    width: 67%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="68"]:before {
+    width: 68%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="69"]:before {
+    width: 69%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="70"]:before {
+    width: 70%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="71"]:before {
+    width: 71%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="72"]:before {
+    width: 72%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="73"]:before {
+    width: 73%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="74"]:before {
+    width: 74%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="75"]:before {
+    width: 75%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="76"]:before {
+    width: 76%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="77"]:before {
+    width: 77%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="78"]:before {
+    width: 78%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="79"]:before {
+    width: 79%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="80"]:before {
+    width: 80%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="81"]:before {
+    width: 81%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="82"]:before {
+    width: 82%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="83"]:before {
+    width: 83%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="84"]:before {
+    width: 84%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="85"]:before {
+    width: 85%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="86"]:before {
+    width: 86%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="87"]:before {
+    width: 87%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="88"]:before {
+    width: 88%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="89"]:before {
+    width: 89%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="90"]:before {
+    width: 90%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="91"]:before {
+    width: 91%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="92"]:before {
+    width: 92%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="93"]:before {
+    width: 93%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="94"]:before {
+    width: 94%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="95"]:before {
+    width: 95%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="96"]:before {
+    width: 96%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="97"]:before {
+    width: 97%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="98"]:before {
+    width: 98%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="99"]:before {
+    width: 99%; }
+  [data-cryodex-widget="progress"].cryodex-loaded[data-percent="100"]:before {
+    width: 100%; }

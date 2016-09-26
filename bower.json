@@ -14,7 +14,7 @@
     "chart.js"
   ],
   "license": "MIT",
-  "homepage": "http://cryodex.rendili.co.uk",
+  "homepage": "https://cryodex.rendili.co.uk",
   "private": true,
   "ignore": [
     "**/.*",
