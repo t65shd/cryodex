@@ -6,13 +6,13 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 		<title>Cryodex Sample</title>
-		<script type="text/javascript" src="../bower_components/jquery/dist/jquery.min.js"></script>
-		<script type="text/javascript" src="../bower_components/foundation-sites/dist/foundation.min.js"></script>
+		<script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+		<script type="text/javascript" src="../node_modules/foundation-sites/dist/js/foundation.min.js"></script>
 		<script type="text/javascript" src="../js/jquery.cryodex.bundle.js"></script>
-		<link rel="stylesheet" href="../bower_components/foundation-sites/dist/foundation.min.css">
-		<link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.css">
+		<link rel="stylesheet" href="../node_modules/foundation-sites/dist/css/foundation.min.css">
+		<link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
 		<link rel="stylesheet" href="../bower_components/weather-icons/css/weather-icons.min.css">
-		<link rel="stylesheet" href="../css/jquery.cryodex.min.css">
+		<link rel="stylesheet" href="../css/jquery.cryodex.sample.min.css">
 	</head>
 	<body>
 		<div class="row">
@@ -160,10 +160,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="small-12 medium-3 columns">
+			<div class="small-12 medium-8 columns">
 				<div class="cryodex-panel" data-equalizer-watch>
 					<h3>Patient progress</h3>
-					<div data-cryodex-widget="doughnut" data-legend-click="legendClick">
+					<div data-cryodex-widget="doughnut" data-legend-click="legendClick" data-click="chartClick">
 						<table>
 							<thead>
 								<tr>
@@ -190,23 +190,23 @@
 					<div class="row">
 						<div class="small-6 columns">Tony Stark</div>
 						<div class="small-6 columns">
-							<div class="small first" data-cryodex-widget="progress" data-percent="60" data-value="60%">60%</div>
+							<div class="small first" data-cryodex-widget="progress" data-percent="60">60%</div>
 						</div>
 						<div class="small-6 columns">Natasha Romanova</div>
 						<div class="small-6 columns">
-							<div class="second" data-cryodex-widget="progress" data-percent="0"" data-value="0%">Not started</div>
+							<div class="second" data-cryodex-widget="progress" data-percent="0">Not started</div>
 						</div>
 						<div class="small-6 columns">Bruce Banner</div>
 						<div class="small-6 columns">
-							<div class="third large" data-cryodex-widget="progress" data-percent="100" data-value="100%">100%</div>
+							<div class="third large" data-cryodex-widget="progress" data-percent="100">100%</div>
 						</div>
 						<div class="small-6 columns">Clint Barton</div>
 						<div class="small-6 columns">
-							<div class="fourth xlarge" data-cryodex-widget="progress" data-percent="10" data-value="10%">10%</div>
+							<div class="fourth xlarge" data-cryodex-widget="progress" data-percent="10">10%</div>
 						</div>
 						<div class="small-6 columns">Steve Rogers</div>
 						<div class="small-6 columns">
-							<div class="fifth" data-cryodex-widget="progress" data-percent="80" data-value="80%">80%</div>
+							<div class="fifth" data-cryodex-widget="progress" data-percent="80">80%</div>
 						</div>
 					</div>
 				</div>
@@ -223,6 +223,14 @@
 
 			$(window).foundation();
 			$(document).cryodex(); /*{
+				legend: {
+					labels: {
+						fontSize: 18,
+						fontColor: '#0000ff'
+					}
+				}
+
+			}); /*{
 				colors: {
 					first: '#25BA9C',
 					second: '#3C93E0',

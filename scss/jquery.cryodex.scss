@@ -2,6 +2,8 @@ $cryodex-panel-padding: 0.5rem !default;
 $cryodex-panel-border: #ccc !default;
 $cryodex-panel-background: #fcfcfc !default;
 $cryodex-progress-background: #ccc !default;
+$cryodex-legend-block-width: 3rem !default;
+$cryodex-legend-block-font-color: black !default;
 
 $cryodex-stat-styles: (
 	first: #1abc9c,
@@ -16,25 +18,17 @@ $cryodex-stat-styles: (
 	tenth: #d35400
 ) !default;
 
-/*
-#1abc9c
-#2ecc71
-#3498db
-#9b59b6
-#34495e
-#f1c40f
-#e67e22
-#e74c3c
-#7f8c8d
-#d35400
-*/
+$croydex-legend-grid: (
+	small: 12,
+	medium: 6,
+	large: 4,
+	xlarge: 3
+) !default;
 
-$cryodex-widget-max-width: 350px !default;
-
-@import "foundation";
-@include foundation-grid;
-@import "font-awesome";
-@import "weather-icons";
+$cryodex-foundation-version: 6 !default;
+$cryodex-use-fontawesome: true !default;
+$cryodex-use-weathericons: true !default;
+$cryodex-widget-max-width: 1050px !default;
 
 .cryodex-panel {
 	border: solid 1px $cryodex-panel-border; padding: $cryodex-panel-padding;
@@ -46,38 +40,67 @@ $cryodex-widget-max-width: 350px !default;
 }
 
 
-.cryodex-icon {
-	border-radius: 5px;
-	text-align: center;
-	background: #aaa; color: white;
-	display: inline-block;
-	width: 6.5rem;
-	margin-bottom: 1rem;
+@if $cryodex-use-fontawesome {
+	.cryodex-icon {
+		border-radius: 5px;
+		text-align: center;
+		background: #aaa; color: white;
+		display: inline-block;
+		width: 6.5rem;
+		margin-bottom: 1rem;
 
-	&:hover { background: #777; } 
+		&:hover { background: #777; } 
 
-	&:before {
-		@include fa-icon();
-		color: white;
-		font-size: 3.5rem;
-		margin: 0.5rem 1.2rem;
-		display: block;
-		line-height: 5.5rem;
-	}
-	&.weather:before {
-		font-family: '#{$wi-font-family}';
-		margin: 1rem 1.2rem 0;
-	}
+		&:before {
+			@include fa-icon();
+			color: white;
+			font-size: 3.5rem;
+			margin: 0.5rem 1.2rem;
+			display: block;
+			line-height: 5.5rem;
+		}
+		@if $cryodex-use-weathericons {
+			&.weather:before {
+				font-family: '#{$wi-font-family}';
+				margin: 1rem 1.2rem 0;
+			}
+		}
 
-	// Colors
-	@each $name, $color in $cryodex-stat-styles {
-		&.#{$name} {
-			background: $color;
-			&:hover { background: darken($color, 20); }
+		// Colors
+		@each $name, $color in $cryodex-stat-styles {
+			&.#{$name} {
+				background: $color;
+				&:hover { background: darken($color, 20); }
+			}
 		}
 	}
+	a.cryodex-icon:hover { color: white; }
+
+	.cryodex-positive, .cryodex-negative {
+		border-radius: 9999px;
+		display: inline-block;
+		background: #777;
+		color: white;
+		padding: 0.2rem 0.4rem;
+		@each $name, $color in $cryodex-stat-styles {
+			&.#{$name} {
+				background: darken($color, 20);
+			}
+		}
+		&:after {
+			@include fa-icon();
+			margin-left: 0.5rem;
+		}
+	}
+
+	.cryodex-positive:after {
+		content: $fa-var-arrow-up;
+	}
+
+	.cryodex-negative:after {
+		content: $fa-var-arrow-down;
+	}
 }
-a.cryodex-icon:hover { color: white; }
 
 .cryodex-stat {
 	display: table; width: 100%;
@@ -151,31 +174,6 @@ a.cryodex-icon:hover { color: white; }
 	}			
 }
 
-.cryodex-positive, .cryodex-negative {
-	border-radius: 9999px;
-	display: inline-block;
-	background: #777;
-	color: white;
-	padding: 0.2rem 0.4rem;
-	@each $name, $color in $cryodex-stat-styles {
-		&.#{$name} {
-			background: darken($color, 20);
-		}
-	}
-	&:after {
-		@include fa-icon();
-		margin-left: 0.5rem;
-	}
-}
-
-.cryodex-positive:after {
-	content: $fa-var-arrow-up;
-}
-
-.cryodex-negative:after {
-	content: $fa-var-arrow-down;
-}
-
 [data-cryodex-widget="progress"] {
 	max-width: 100%; background: $cryodex-progress-background; margin-bottom: 0.8rem; text-align: center; text-indent: -9999px;
 	&.small { font-size: 0.8rem; }
@@ -199,6 +197,91 @@ a.cryodex-icon:hover { color: white; }
 	@for $width from 0 to 101 {
 		&.cryodex-loaded[data-percent="#{$width}"]:before {
 			width: $width * 1%;
+		}
+	}
+}
+
+.cryodex-chart-wrapper {
+	@include grid-row;
+	.cryodex-legend {
+		@each $breakpoint, $width in $croydex-legend-grid {
+			@if ($cryodex-foundation-version == 6) {
+				@include breakpoint(#{$breakpoint}) {
+					@include grid-column($width );
+				}
+			} @else {
+				@if($breakpoint == "small") {
+					@media #{$small-up} {
+						@include grid-column($width);
+					}
+				}
+				@if($breakpoint == "medium") {
+					@media #{$medium} {
+						@include grid-column($width);
+					}
+				}
+				@if($breakpoint == "large") {
+					@media #{$large} {
+						@include grid-column($width);
+					}
+				}
+			}
+		}
+
+		ul { 
+			list-style: none; margin: 0;
+			li {
+				margin: 0.2rem 0;
+				span { width: $cryodex-legend-block-width; display: inline-block; margin-right: 0.5rem; text-align: center; color: $cryodex-legend-block-font-color; }
+			}
+		}
+	}
+	.cryodex-chart {
+		div {
+			position: relative; height: 0; padding-bottom: 100%; overflow: hidden;
+			canvas {
+				margin-left: -20%;
+				margin-right: -20%;
+			}
+		}
+		@each $breakpoint, $width in $croydex-legend-grid {
+			@if ($cryodex-foundation-version == 6) {
+				@include breakpoint(#{$breakpoint}) {
+					@if ($width == 12) {
+						@include grid-column(12);
+					} @else {
+						@include grid-column(12 - $width);
+					}
+				}
+			} @else {
+				@if($breakpoint == "small") {
+					@media #{$small-up} {
+						@if ($width == 12) {
+							@include grid-column(12);
+						} @else {
+							@include grid-column(12 - $width);
+						}
+					}
+				}
+				@if($breakpoint == "medium") {
+					@media #{$medium} {
+						@if ($width == 12) {
+							@include grid-column(12);
+						} @else {
+							@include grid-column(12 - $width);
+						}
+					}
+				}
+				@if($breakpoint == "large") {
+					@media #{$large} {
+						@if ($width == 12) {
+							@include grid-column(12);
+						} @else {
+							@include grid-column(12 - $width);
+						}
+					}
+				}
+			}
 		}
 	}
 }

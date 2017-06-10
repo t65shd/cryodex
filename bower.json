@@ -24,9 +24,6 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": ">= 2.1.0",
-    "font-awesome": "fontawesome#^4.6.3",
     "weather-icons": "^2.0.10",
-    "foundation-sites": "^6.2.3"
   }
 }

@@ -13,15 +13,15 @@ var cleanCSS = require('gulp-clean-css');
 
 var paths = {
 	sass: [
-		'bower_components/foundation-sites/scss',
-		'bower_components/motion-ui/src',
-		'bower_components/font-awesome/scss',
+		'node_modules/foundation-sites/scss',
+		'node_modules/motion-ui/src',
+		'node_modules/font-awesome/scss',
 		'bower_components/weather-icons/sass'
 	],
 	javascript: [
 		'./js/jquery.cryodex.js'
 	],
-	scss: "./scss/*.scss"
+	scss: "./scss/jquery.cryodex.sample.scss"
 };
 
 // Browsers to target when prefixing CSS.

@@ -12,7 +12,8 @@
 				eighth: '#f1c40f',
 				ninth: '#7f8c8d',
 				tenth: '#d35400' 
-			}
+			},
+			legend: {}
 		};
 
 	function Cryodex(element, options) {
@@ -50,6 +51,7 @@
 					this._progress();
 					break;
 			}
+			$(this.element).addClass('cryodex-loaded');
 		},
 
 		_getColor: function(color) {
@@ -149,25 +151,49 @@
 				dataset_item.borderWidth = 0;
 				datasets.push(dataset_item);
 			});
-			var legend = { position: 'left' };
+			var legend = this.options.legend;
+			//legend.position = 'left';
+			legend.display = false;
 			if ($(this.element).attr('data-legend-click')) {
 				legend.onClick = window[$(this.element).attr('data-legend-click')];
 			}
 
-			$(this.element).append('<canvas />');
+			$(this.element).append('<div class="cryodex-chart-wrapper"><div class="cryodex-legend" /><div class="cryodex-chart"><canvas /></div></div>');
 			this.chart = new Chart($('canvas', this.element), {
 				type: 'doughnut',
 				responsive: true,
-				
 				data: {
 					labels: labels,
 					datasets: datasets
 				},
 				options: {
 					legend: legend,
-					onClick: window[$(this.element).attr('data-click')]
-				}
+					onClick: window[$(this.element).attr('data-click')],
+					legendCallback: function(chart) {
+						console.log(chart.data);
+						var text = [];
+						text.push('<ul>');
+						for (var i=0; i<chart.data.datasets[0].data.length; i++) {
+							text.push('<li>');
+							console.log($(base.element).attr('data-legend-click'));
+							if ($(base.element).attr('data-legend-click')) {
+								text.push('<a href="javascript:' + $(base.element).attr('data-legend-click') + '(null, {index: ' + i +', text: \'' + chart.data.labels[i] + '\'});">');
+							}
+							text.push('<span style="background-color:' + chart.data.datasets[0].backgroundColor[i] + '">&nbsp;</span>');
+							if (chart.data.labels[i]) {
+								text.push(chart.data.labels[i]);
+							}
+							if ($(base.element).attr('data-legend-click')) {
+								text.push('</a>');
+							}
+							text.push('</li>');
+						}
+						text.push('</ul>');
+						return text.join("");
+					}
+				}				
 			});
+			$('.cryodex-legend', this.element).html(this.chart.generateLegend());
 		},
 
 		_bar: function () {
@@ -263,8 +289,8 @@
 		},
 
 		_progress: function() {
-			$(this).addClass('cryodex-loaded');
-		}
+			$(this.element).attr('data-value', $(this.element).html());
+		},
 	};
 
 	// A really lightweight plugin wrapper around the constructor,

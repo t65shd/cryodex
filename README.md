@@ -18,7 +18,7 @@ bower install --save rendili-crodex
 
 ### Demo
 
-You can see a [demo](test/sample.html) 
+You can see a [demo](test/sample.html). Documentation coming soon!
 
 ## License
 
