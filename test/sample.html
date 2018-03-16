@@ -11,7 +11,7 @@
 		<script type="text/javascript" src="../js/jquery.cryodex.bundle.js"></script>
 		<link rel="stylesheet" href="../node_modules/foundation-sites/dist/css/foundation.min.css">
 		<link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
-		<link rel="stylesheet" href="../bower_components/weather-icons/css/weather-icons.min.css">
+		<link rel="stylesheet" href="../node_modules/weathericons/css/weather-icons.min.css">
 		<link rel="stylesheet" href="../css/jquery.cryodex.sample.min.css">
 	</head>
 	<body>
@@ -161,7 +161,7 @@
 				</div>
 			</div>
 			<div class="small-12 medium-8 columns">
-				<div class="cryodex-panel" data-equalizer-watch>
+				<div class="cryodex-panel">
 					<h3>Patient progress</h3>
 					<div data-cryodex-widget="doughnut" data-legend-click="legendClick" data-click="chartClick">
 						<table>
@@ -182,6 +182,48 @@
 								</tr>
 							</tbody>
 						</table>
+					</div>
+				</div>
+				<div class="cryodex-panel">
+					<h3>Patient progress</h3>
+						<div data-cryodex-widget="horizontal-bar" data-stacked="true" data-click="chartClick">
+							<table>
+								<thead>
+									<tr>
+										<th>North East</th>
+										<th>North West</th>
+										<th>Sctoland</th>
+										<th>Midlands</th>
+										<th>South East</th>
+										<th>South West</th>
+										<th>London</th>
+										<th>Wales</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr data-label="Sites">
+										<td>200</td>
+										<td>99</td>
+										<td>320</td>
+										<td>76</td>
+										<td>200</td>
+										<td>99</td>
+										<td>320</td>
+										<td>76</td>
+									</tr>
+									<tr data-label="Sites 2">
+										<td data-color="tenth">-76</td>
+										<td data-color="ninth">-200</td>
+										<td data-color="seventh">-99</td>
+										<td data-color="sixth">-320</td>
+										<td data-color="third">-50</td>
+										<td data-color="fourth">-10</td>
+										<td data-color="first">-133</td>
+										<td data-color="second">-205</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
