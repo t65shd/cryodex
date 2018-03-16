@@ -5184,34 +5184,34 @@ a.cryodex-icon:hover {
     -ms-transform: translateX(-50%);
         transform: translateX(-50%); }
 
-[data-cryodex-widget="gauge"][data-color="first"] label.fa {
+[data-cryodex-widget="gauge"][data-colour="first"] label.fa {
   color: #1abc9c; }
 
-[data-cryodex-widget="gauge"][data-color="second"] label.fa {
+[data-cryodex-widget="gauge"][data-colour="second"] label.fa {
   color: #e74c3c; }
 
-[data-cryodex-widget="gauge"][data-color="third"] label.fa {
+[data-cryodex-widget="gauge"][data-colour="third"] label.fa {
   color: #3498db; }
 
-[data-cryodex-widget="gauge"][data-color="fourth"] label.fa {
+[data-cryodex-widget="gauge"][data-colour="fourth"] label.fa {
   color: #9b59b6; }
 
-[data-cryodex-widget="gauge"][data-color="fifth"] label.fa {
+[data-cryodex-widget="gauge"][data-colour="fifth"] label.fa {
   color: #34495e; }
 
-[data-cryodex-widget="gauge"][data-color="sixth"] label.fa {
+[data-cryodex-widget="gauge"][data-colour="sixth"] label.fa {
   color: #2ecc71; }
 
-[data-cryodex-widget="gauge"][data-color="seventh"] label.fa {
+[data-cryodex-widget="gauge"][data-colour="seventh"] label.fa {
   color: #e67e22; }
 
-[data-cryodex-widget="gauge"][data-color="eighth"] label.fa {
+[data-cryodex-widget="gauge"][data-colour="eighth"] label.fa {
   color: #f1c40f; }
 
-[data-cryodex-widget="gauge"][data-color="ninth"] label.fa {
+[data-cryodex-widget="gauge"][data-colour="ninth"] label.fa {
   color: #7f8c8d; }
 
-[data-cryodex-widget="gauge"][data-color="tenth"] label.fa {
+[data-cryodex-widget="gauge"][data-colour="tenth"] label.fa {
   color: #d35400; }
 
 [data-cryodex-widget="progress"] {
