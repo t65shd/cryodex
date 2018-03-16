@@ -4920,6 +4920,10 @@
 .wi-wu-unknown:before {
   content: ""; }
 
+#cryodex-js-colour-config {
+  display: none;
+  content: "{  'first': '#1abc9c',  'second': '#e74c3c',  'third': '#3498db',  'fourth': '#9b59b6',  'fifth': '#34495e',  'sixth': '#2ecc71',  'seventh': '#e67e22',  'eighth': '#f1c40f',  'ninth': '#7f8c8d',  'tenth': '#d35400' }"; }
+
 .cryodex-panel {
   border: solid 1px #ccc;
   padding: 0.5rem;

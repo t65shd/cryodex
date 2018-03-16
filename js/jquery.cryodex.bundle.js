@@ -15856,7 +15856,7 @@ module.exports = function(Chart) {
 ; (function ($, window, document, undefined) {
 	var pluginName = "cryodex",
 		defaults = {
-			baseColors: {
+			baseColours: {
 				first: '#1abc9c',
 				second: '#e74c3c',
 				third: '#3498db',
@@ -15874,7 +15874,14 @@ module.exports = function(Chart) {
 	function Cryodex(element, options) {
 		this.element = element;
 
-		defaults.colors = defaults.baseColors;
+		$('body').append('<div id="cryodex-js-colour-config"></div>');
+		colours =  jQuery.parseJSON($('#cryodex-js-colour-config').css('content').replace(/"/g,'').replace(/'/g,'"'));
+
+		if (typeof(colours) == 'object') {
+			defaults.colours = colours;
+		} else {
+			defaults.colours = defaults.baseColours;
+		}
 
 		this.options = $.extend({}, defaults, options);
 
@@ -15912,37 +15919,37 @@ module.exports = function(Chart) {
 			$(this.element).addClass('cryodex-loaded');
 		},
 
-		_getColor: function(color) {
-			if (typeof (color) == 'undefined' || color == '') {
-				color = this.options.colors[Object.keys(this.options.colors)[this._counter % Object.keys(this.options.colors).length]];
-			} else if (typeof (this._defaults.baseColors[color]) != 'undefined') {
-				color = this._defaults.baseColors[color];
-			} else if (typeof (this.options.colors[color]) != 'undefined') {
-				color = this.options.colors[color];
+		_getColour: function(colour) {
+			if (typeof (colour) == 'undefined' || colour == '') {
+				colour = this.options.colours[Object.keys(this.options.colours)[this._counter % Object.keys(this.options.colours).length]];
+			} else if (typeof (this.options.colours[colour]) != 'undefined') {
+				colour = this.options.colours[colour];
+			} else if (typeof (this._defaults.baseColours[colour]) != 'undefined') {
+				colour = this._defaults.baseColours[colour];
 			}
-			return color;
+			return colour;
 		},
 
-		_getColorAlpha: function (color, opacity) {
-			color = this._getColor(color);
-			if (color.substr(0, 5) == 'rgba(') {
-				rgb = color.replace('rgba(', '').replace(')', '');
+		_getColourAlpha: function (colour, opacity) {
+			colour = this._getColour(colour);
+			if (colour.substr(0, 5) == 'rgba(') {
+				rgb = colour.replace('rgba(', '').replace(')', '');
 				rgb = rgb.split(',');
-				color = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + opacity + ')';
-			} else if (color.substr(0, 4) == 'rgb(') {
-				rgb = color.replace('rgb(', '').replace(')', '');
+				colour = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + opacity + ')';
+			} else if (colour.substr(0, 4) == 'rgb(') {
+				rgb = colour.replace('rgb(', '').replace(')', '');
 				rgb = rgb.split(',');
-				color = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + opacity + ')';
-			} else if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(color)) {
-				c = color.substring(1).split('');
+				colour = 'rgba(' + rgb[0] + ',' + rgb[1] + ',' + rgb[2] + ',' + opacity + ')';
+			} else if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(colour)) {
+				c = colour.substring(1).split('');
 				if (c.length == 3) {
 					c = [c[0], c[0], c[1], c[1], c[2], c[2]];
 				}
 				c = '0x' + c.join('');
-				color = 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + opacity + ')';
+				colour = 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + opacity + ')';
 			}
 
-			return color;
+			return colour;
 		},
 
 		_gauge: function () {
@@ -15950,7 +15957,7 @@ module.exports = function(Chart) {
 
 			var value1 = $(this.element).attr('data-percent') * 0.75;
 			var value2 = 75 - value1;
-			var color = this._getColor($(this.element).attr('data-color'));
+			var colour = this._getColour($(this.element).attr('data-colour'));
 
 			$(this.element).append('<canvas />');
 			this.chart = new Chart($('canvas', this.element), {
@@ -15962,12 +15969,12 @@ module.exports = function(Chart) {
 						label: 'progress',
 						data: [value1, value2, 25],
 						backgroundColor: [
-							color,
+							colour,
 							'#ddd',
 							'transparent'
 						],
 						hoverBackgroundColor: [
-							color,
+							colour,
 							'#ddd',
 							'transparent'
 						],
@@ -16003,7 +16010,7 @@ module.exports = function(Chart) {
 				dataset_item.backgroundColor = new Array();
 				$('td', this).each(function () {
 					dataset_item.data.push($(this).text());
-					dataset_item.backgroundColor.push(base._getColor($(this).attr('data-color')));
+					dataset_item.backgroundColor.push(base._getColour($(this).attr('data-colour')));
 					base._counter ++;
 				});
 				dataset_item.borderWidth = 0;
@@ -16073,7 +16080,7 @@ module.exports = function(Chart) {
 				dataset_item.backgroundColor = new Array();
 				$('td', this).each(function () {
 					dataset_item.data.push($(this).text());
-					dataset_item.backgroundColor.push(base._getColor($(this).attr('data-color')));
+					dataset_item.backgroundColor.push(base._getColour($(this).attr('data-colour')));
 					base._counter ++;
 				});
 				dataset_item.borderWidth = 0;
@@ -16091,17 +16098,6 @@ module.exports = function(Chart) {
 					yAxes: [{ stacked: true }]
 				}
 			}
-
-			if ($(this.element).attr('data-divergent')) {
-				chartoptions.tooltips = {
-					callbacks: {
-						label: function(tooltipItem, data) {
-							return Math.abs(tooltipItem.yLabel);
-						}
-					}
-				}
-			}
-
 
 			$(this.element).append('<canvas />');
 			this.chart = new Chart($('canvas', this.element), {
@@ -16133,13 +16129,13 @@ module.exports = function(Chart) {
 				dataset_item.data = new Array();
 				dataset_item.pointRadius = 3;
 				dataset_item.pointHoverRadius = 5;
-				var color = base._getColor($(this).attr('data-color'));
-				dataset_item.pointBackgroundColor = color;
-				dataset_item.borderColor = color;
+				var colour = base._getColour($(this).attr('data-colour'));
+				dataset_item.pointBackgroundColor = colour;
+				dataset_item.borderColor = colour;
 				dataset_item.pointBorderColor = '#fff';
 				dataset_item.pointHitRadius = 20;
 				if (typeof ($(this).attr('data-fill')) != 'undefined') {
-					dataset_item.backgroundColor = base._getColorAlpha($(this).attr('data-color'), 0.6);
+					dataset_item.backgroundColor = base._getColourAlpha($(this).attr('data-colour'), 0.6);
 				}
 				$('td', this).each(function () {
 					dataset_item.data.push($(this).text());

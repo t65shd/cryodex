@@ -30,6 +30,20 @@ $cryodex-use-fontawesome: true !default;
 $cryodex-use-weathericons: true !default;
 $cryodex-widget-max-width: 1050px !default;
 
+#cryodex-js-colour-config {
+	display: none;
+	$cryodex-js-config: "";
+	$stat-count: length($cryodex-stat-styles);
+	@each $name, $colour in $cryodex-stat-styles {	
+		$stat-count: $stat-count - 1;
+		$cryodex-js-config: $cryodex-js-config + " '#{$name}': '#{$colour}'";
+		@if $stat-count > 0 {
+			$cryodex-js-config: $cryodex-js-config + ", ";
+		}
+	}
+	content: "{ #{$cryodex-js-config} }";
+}
+
 .cryodex-panel {
 	border: solid 1px $cryodex-panel-border; padding: $cryodex-panel-padding;
 	background: $cryodex-panel-background;
@@ -38,7 +52,6 @@ $cryodex-widget-max-width: 1050px !default;
 		border-bottom: solid 1px $cryodex-panel-border; margin-bottom: 1rem; padding-bottom: 0.3rem;
 	}
 }
-
 
 @if $cryodex-use-fontawesome {
 	.cryodex-icon {
@@ -67,10 +80,10 @@ $cryodex-widget-max-width: 1050px !default;
 		}
 
 		// Colors
-		@each $name, $color in $cryodex-stat-styles {
+		@each $name, $colour in $cryodex-stat-styles {
 			&.#{$name} {
-				background: $color;
-				&:hover { background: darken($color, 20); }
+				background: $colour;
+				&:hover { background: darken($colour, 20); }
 			}
 		}
 	}
@@ -82,9 +95,9 @@ $cryodex-widget-max-width: 1050px !default;
 		background: #777;
 		color: white;
 		padding: 0.2rem 0.4rem;
-		@each $name, $color in $cryodex-stat-styles {
+		@each $name, $colour in $cryodex-stat-styles {
 			&.#{$name} {
-				background: darken($color, 20);
+				background: darken($colour, 20);
 			}
 		}
 		&:after {
@@ -133,16 +146,16 @@ $cryodex-widget-max-width: 1050px !default;
 		}
 	}
 	// Colors
-	@each $name, $color in $cryodex-stat-styles {
+	@each $name, $colour in $cryodex-stat-styles {
 		&.#{$name} {
-			background: darken($color, 20);
+			background: darken($colour, 20);
 			.cryodex-icon {
-				background: darken($color, 20);
+				background: darken($colour, 20);
 			}
 			.cryodex-data { 
-				background: $color;
+				background: $colour;
 				span.cryodex-positive, span.cryodex-negative {
-					color: $color;
+					color: $colour;
 				}
 			}		
 		}
@@ -167,9 +180,9 @@ $cryodex-widget-max-width: 1050px !default;
 		&:first-of-type { top: 50%; left: 50%; transform: translate(-50%, -50%); }
 		&:nth-of-type(2) { bottom: 0; left: 50%; transform: translateX(-50%); }
 	}
-	@each $name, $color in $cryodex-stat-styles {
+	@each $name, $colour in $cryodex-stat-styles {
 		&[data-color="#{$name}"] label.fa {
-			color: $color;
+			color: $colour;
 		}
 	}			
 }
@@ -187,10 +200,10 @@ $cryodex-widget-max-width: 1050px !default;
 	&:after { position: absolute; top: 0; left: 0; right: 0; text-align: center; content: attr(data-value); text-indent: 0; }
 	
 	// Colors
-	@each $name, $color in $cryodex-stat-styles {
+	@each $name, $colour in $cryodex-stat-styles {
 		&.#{$name}:before {
-			background: $color;
-			&:hover { background: darken($color, 20); }
+			background: $colour;
+			&:hover { background: darken($colour, 20); }
 		}
 	}
 
