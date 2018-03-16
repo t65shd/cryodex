@@ -8,12 +8,12 @@ This library is a simple wrapper around chart.js, Zurb Foundation, font-awsome a
 
 ## Installation
 
-### Bower
+### npm
 
-The library can be installed from bower:
+The library can be installed from npm:
 
 ```bash
-bower install --save rendili-crodex
+npm install github:t65shd/cryodex
 ```
 
 ### Demo

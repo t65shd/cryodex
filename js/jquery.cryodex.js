@@ -42,7 +42,10 @@
 					this._doughnut();
 					break;
 				case 'bar':
-					this._bar();
+					this._bar('bar');
+					break;
+				case 'horizontal-bar':
+					this._bar('horizontalBar');
 					break;
 				case 'line':
 					this._line();
@@ -196,7 +199,7 @@
 			$('.cryodex-legend', this.element).html(this.chart.generateLegend());
 		},
 
-		_bar: function () {
+		_bar: function (charttype) {
 			var base = this;
 			base._counter = 0;
 
@@ -222,19 +225,27 @@
 				datasets.push(dataset_item);
 			});
 
-			console.log(window[$(this.element).attr('data-click')]);
+			var chartoptions = {
+				legend: { display: false },
+				onClick: window[$(this.element).attr('data-click')]
+			}
+
+			if ($(this.element).attr('data-stacked')) {
+				chartoptions.scales = {
+					xAxes: [{ stacked: true }],
+					yAxes: [{ stacked: true }]
+				}
+			}
+
 			$(this.element).append('<canvas />');
 			this.chart = new Chart($('canvas', this.element), {
-				type: 'bar',
+				type: charttype,
 				responsive: true,
 				data: {
 					labels: labels,
 					datasets: datasets
 				},
-				options: {
-					legend: { display: false },
-					onClick: window[$(this.element).attr('data-click')]
-				}
+				options: chartoptions
 			});
 		},
 

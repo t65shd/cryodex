@@ -16,7 +16,7 @@ var paths = {
 		'node_modules/foundation-sites/scss',
 		'node_modules/motion-ui/src',
 		'node_modules/font-awesome/scss',
-		'bower_components/weather-icons/sass'
+		'node_modules/weathericons/sass'
 	],
 	javascript: [
 		'./js/jquery.cryodex.js'
