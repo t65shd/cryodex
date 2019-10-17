@@ -26,6 +26,7 @@ $croydex-legend-grid: (
 ) !default;
 
 $cryodex-foundation-version: 6 !default;
+$cryodex-foundation-grid: 'xy' !default;
 $cryodex-use-fontawesome: true !default;
 $cryodex-use-weathericons: true !default;
 $cryodex-widget-max-width: 1050px !default;
@@ -215,12 +216,20 @@ $cryodex-widget-max-width: 1050px !default;
 }
 
 .cryodex-chart-wrapper {
-	@include grid-row;
+	@if ($cryodex-foundation-grid == 'xy') {
+		@include xy-grid();
+	} else {
+		@include grid-row;
+	}
 	.cryodex-legend {
 		@each $breakpoint, $width in $croydex-legend-grid {
 			@if ($cryodex-foundation-version == 6) {
 				@include breakpoint(#{$breakpoint}) {
-					@include grid-column($width );
+					@if ($cryodex-foundation-grid == 'xy') {
+						@include xy-cell($width);
+					} else {
+						@include grid-column($width);
+					}
 				}
 			} @else {
 				@if($breakpoint == "small") {
@@ -251,7 +260,7 @@ $cryodex-widget-max-width: 1050px !default;
 	}
 	.cryodex-chart {
 		div {
-			position: relative; height: 0; padding-bottom: 100%; overflow: hidden;
+			position: relative; height: 0; overflow: hidden;
 			canvas {
 				margin-left: -20%;
 				margin-right: -20%;
@@ -260,10 +269,18 @@ $cryodex-widget-max-width: 1050px !default;
 		@each $breakpoint, $width in $croydex-legend-grid {
 			@if ($cryodex-foundation-version == 6) {
 				@include breakpoint(#{$breakpoint}) {
-					@if ($width == 12) {
-						@include grid-column(12);
-					} @else {
-						@include grid-column(12 - $width);
+					@if ($cryodex-foundation-grid == 'xy') {
+						@if ($width == 12) {
+							@include xy-cell(12);
+						} @else {
+							@include xy-cell(12 - $width);
+						}
+					} else {
+						@if ($width == 12) {
+							@include grid-column(12);
+						} @else {
+							@include grid-column(12 - $width);
+						}
 					}
 				}
 			} @else {

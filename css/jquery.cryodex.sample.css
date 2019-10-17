@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /**
  * Foundation for Sites by ZURB
- * Version 6.3.1
+ * Version 6.5.3
  * foundation.zurb.com
  * Licensed under MIT Open Source
  */
@@ -11,7 +11,12 @@
   margin-left: auto; }
   .row::before, .row::after {
     display: table;
-    content: ' '; }
+    content: ' ';
+    -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1; }
   .row::after {
     clear: both; }
   .row.collapse > .column, .row.collapse > .columns {
@@ -54,6 +59,9 @@
     .column, .columns {
       padding-right: 0.9375rem;
       padding-left: 0.9375rem; } }
+  .column, .columns, .column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
+    float: left;
+    clear: none; }
   .column:last-child:not(:first-child), .columns:last-child:not(:first-child) {
     float: right; }
   .column.end:last-child:last-child, .end.columns:last-child:last-child {
@@ -335,9 +343,19 @@
 .small-push-0,
 .small-pull-0 {
   position: static;
-  float: left;
   margin-right: 0;
   margin-left: 0; }
+  .small-uncentered, .small-uncentered:last-child:not(:first-child),
+  .small-push-0,
+  .small-push-0:last-child:not(:first-child),
+  .small-pull-0,
+  .small-pull-0:last-child:not(:first-child) {
+    float: left;
+    clear: none; }
+  .small-uncentered:last-child:not(:first-child),
+  .small-push-0:last-child:not(:first-child),
+  .small-pull-0:last-child:not(:first-child) {
+    float: right; }
 
 @media print, screen and (min-width: 40em) {
   .medium-1 {
@@ -548,9 +566,19 @@
   .medium-push-0,
   .medium-pull-0 {
     position: static;
-    float: left;
     margin-right: 0;
-    margin-left: 0; } }
+    margin-left: 0; }
+    .medium-uncentered, .medium-uncentered:last-child:not(:first-child),
+    .medium-push-0,
+    .medium-push-0:last-child:not(:first-child),
+    .medium-pull-0,
+    .medium-pull-0:last-child:not(:first-child) {
+      float: left;
+      clear: none; }
+    .medium-uncentered:last-child:not(:first-child),
+    .medium-push-0:last-child:not(:first-child),
+    .medium-pull-0:last-child:not(:first-child) {
+      float: right; } }
 
 @media print, screen and (min-width: 64em) {
   .large-1 {
@@ -761,9 +789,19 @@
   .large-push-0,
   .large-pull-0 {
     position: static;
-    float: left;
     margin-right: 0;
-    margin-left: 0; } }
+    margin-left: 0; }
+    .large-uncentered, .large-uncentered:last-child:not(:first-child),
+    .large-push-0,
+    .large-push-0:last-child:not(:first-child),
+    .large-pull-0,
+    .large-pull-0:last-child:not(:first-child) {
+      float: left;
+      clear: none; }
+    .large-uncentered:last-child:not(:first-child),
+    .large-push-0:last-child:not(:first-child),
+    .large-pull-0:last-child:not(:first-child) {
+      float: right; } }
 
 .column-block {
   margin-bottom: 1.25rem; }
@@ -865,39 +903,56 @@
   margin-left: .3em; }
 
 .fa-spin {
+  -webkit-animation: fa-spin 2s infinite linear;
   animation: fa-spin 2s infinite linear; }
 
 .fa-pulse {
+  -webkit-animation: fa-spin 1s infinite steps(8);
   animation: fa-spin 1s infinite steps(8); }
+
+@-webkit-keyframes fa-spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg); }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg); } }
 
 @keyframes fa-spin {
   0% {
+    -webkit-transform: rotate(0deg);
     transform: rotate(0deg); }
   100% {
+    -webkit-transform: rotate(359deg);
     transform: rotate(359deg); } }
 
 .fa-rotate-90 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+  -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg); }
 
 .fa-rotate-180 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2)";
+  -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg); }
 
 .fa-rotate-270 {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=3)";
+  -webkit-transform: rotate(270deg);
   -ms-transform: rotate(270deg);
   transform: rotate(270deg); }
 
 .fa-flip-horizontal {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0, mirror=1)";
+  -webkit-transform: scale(-1, 1);
   -ms-transform: scale(-1, 1);
   transform: scale(-1, 1); }
 
 .fa-flip-vertical {
   -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=2, mirror=1)";
+  -webkit-transform: scale(1, -1);
   -ms-transform: scale(1, -1);
   transform: scale(1, -1); }
 
@@ -906,7 +961,8 @@
 :root .fa-rotate-270,
 :root .fa-flip-horizontal,
 :root .fa-flip-vertical {
-  filter: none; }
+  -webkit-filter: none;
+          filter: none; }
 
 .fa-stack {
   position: relative;
@@ -3130,26 +3186,31 @@
 
 .wi-rotate-90 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+  -webkit-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   transform: rotate(90deg); }
 
 .wi-rotate-180 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: rotate(180deg);
   -ms-transform: rotate(180deg);
   transform: rotate(180deg); }
 
 .wi-rotate-270 {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+  -webkit-transform: rotate(270deg);
   -ms-transform: rotate(270deg);
   transform: rotate(270deg); }
 
 .wi-flip-horizontal {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=0);
+  -webkit-transform: scale(-1, 1);
   -ms-transform: scale(-1, 1);
   transform: scale(-1, 1); }
 
 .wi-flip-vertical {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  -webkit-transform: scale(1, -1);
   -ms-transform: scale(1, -1);
   transform: scale(1, -1); }
 
@@ -5176,13 +5237,15 @@ a.cryodex-icon:hover {
   [data-cryodex-widget="gauge"] label:first-of-type {
     top: 50%;
     left: 50%;
-    -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%); }
+    -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%); }
   [data-cryodex-widget="gauge"] label:nth-of-type(2) {
     bottom: 0;
     left: 50%;
-    -ms-transform: translateX(-50%);
-        transform: translateX(-50%); }
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%); }
 
 [data-cryodex-widget="gauge"][data-colour="first"] label.fa {
   color: #1abc9c; }
@@ -5234,6 +5297,7 @@ a.cryodex-icon:hover {
     background: #777;
     content: "";
     width: 0;
+    -webkit-transition: all 650ms ease-in;
     transition: all 650ms ease-in; }
   [data-cryodex-widget="progress"]:after {
     position: absolute;
@@ -5487,64 +5551,105 @@ a.cryodex-icon:hover {
     width: 100%; }
 
 .cryodex-chart-wrapper {
-  max-width: 75rem;
-  margin-right: auto;
-  margin-left: auto; }
-  .cryodex-chart-wrapper::before, .cryodex-chart-wrapper::after {
-    display: table;
-    content: ' '; }
-  .cryodex-chart-wrapper::after {
-    clear: both; }
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap; }
+  .cryodex-chart-wrapper else {
+    max-width: 75rem;
+    margin-right: auto;
+    margin-left: auto; }
+    .cryodex-chart-wrapper else::before, .cryodex-chart-wrapper else::after {
+      display: table;
+      content: ' ';
+      -ms-flex-preferred-size: 0;
+          flex-basis: 0;
+      -webkit-box-ordinal-group: 2;
+          -ms-flex-order: 1;
+              order: 1; }
+    .cryodex-chart-wrapper else::after {
+      clear: both; }
   .cryodex-chart-wrapper .cryodex-legend {
-    width: 100%;
-    float: left;
-    padding-right: 0.625rem;
-    padding-left: 0.625rem; }
+    width: calc(100% - 1.25rem);
+    margin-right: 0.625rem;
+    margin-left: 0.625rem; }
+    .cryodex-chart-wrapper .cryodex-legend else {
+      width: 100%;
+      float: left;
+      padding-right: 0.625rem;
+      padding-left: 0.625rem; }
+      @media print, screen and (min-width: 40em) {
+        .cryodex-chart-wrapper .cryodex-legend else {
+          padding-right: 0.9375rem;
+          padding-left: 0.9375rem; } }
+      .cryodex-chart-wrapper .cryodex-legend else, .cryodex-chart-wrapper .cryodex-legend else:last-child:not(:first-child) {
+        float: left;
+        clear: none; }
+      .cryodex-chart-wrapper .cryodex-legend else:last-child:not(:first-child) {
+        float: right; }
     @media print, screen and (min-width: 40em) {
       .cryodex-chart-wrapper .cryodex-legend {
+        width: calc(50% - 1.875rem);
+        margin-right: 0.9375rem;
+        margin-left: 0.9375rem; }
+        .cryodex-chart-wrapper .cryodex-legend else {
+          width: 50%;
+          float: left;
+          padding-right: 0.625rem;
+          padding-left: 0.625rem; } }
+    @media print, screen and (min-width: 40em) and (min-width: 40em) {
+      .cryodex-chart-wrapper .cryodex-legend else {
         padding-right: 0.9375rem;
         padding-left: 0.9375rem; } }
-    .cryodex-chart-wrapper .cryodex-legend:last-child:not(:first-child) {
-      float: right; }
     @media print, screen and (min-width: 40em) {
-      .cryodex-chart-wrapper .cryodex-legend {
-        width: 50%;
-        float: left;
-        padding-right: 0.625rem;
-        padding-left: 0.625rem; } }
-  @media print, screen and (min-width: 40em) and (min-width: 40em) {
-    .cryodex-chart-wrapper .cryodex-legend {
-      padding-right: 0.9375rem;
-      padding-left: 0.9375rem; } }
-    @media print, screen and (min-width: 40em) {
-        .cryodex-chart-wrapper .cryodex-legend:last-child:not(:first-child) {
-          float: right; } }
+          .cryodex-chart-wrapper .cryodex-legend else, .cryodex-chart-wrapper .cryodex-legend else:last-child:not(:first-child) {
+            float: left;
+            clear: none; }
+          .cryodex-chart-wrapper .cryodex-legend else:last-child:not(:first-child) {
+            float: right; } }
     @media print, screen and (min-width: 64em) {
       .cryodex-chart-wrapper .cryodex-legend {
-        width: 33.33333%;
-        float: left;
-        padding-right: 0.625rem;
-        padding-left: 0.625rem; } }
-  @media print, screen and (min-width: 64em) and (min-width: 40em) {
-    .cryodex-chart-wrapper .cryodex-legend {
-      padding-right: 0.9375rem;
-      padding-left: 0.9375rem; } }
+        width: calc(33.33333% - 1.875rem);
+        margin-right: 0.9375rem;
+        margin-left: 0.9375rem; }
+        .cryodex-chart-wrapper .cryodex-legend else {
+          width: 33.33333%;
+          float: left;
+          padding-right: 0.625rem;
+          padding-left: 0.625rem; } }
+    @media print, screen and (min-width: 64em) and (min-width: 40em) {
+      .cryodex-chart-wrapper .cryodex-legend else {
+        padding-right: 0.9375rem;
+        padding-left: 0.9375rem; } }
     @media print, screen and (min-width: 64em) {
-        .cryodex-chart-wrapper .cryodex-legend:last-child:not(:first-child) {
-          float: right; } }
+          .cryodex-chart-wrapper .cryodex-legend else, .cryodex-chart-wrapper .cryodex-legend else:last-child:not(:first-child) {
+            float: left;
+            clear: none; }
+          .cryodex-chart-wrapper .cryodex-legend else:last-child:not(:first-child) {
+            float: right; } }
     @media screen and (min-width: 75em) {
       .cryodex-chart-wrapper .cryodex-legend {
-        width: 25%;
-        float: left;
-        padding-right: 0.625rem;
-        padding-left: 0.625rem; } }
-  @media screen and (min-width: 75em) and (min-width: 40em) {
-    .cryodex-chart-wrapper .cryodex-legend {
-      padding-right: 0.9375rem;
-      padding-left: 0.9375rem; } }
+        width: calc(25% - 1.875rem);
+        margin-right: 0.9375rem;
+        margin-left: 0.9375rem; }
+        .cryodex-chart-wrapper .cryodex-legend else {
+          width: 25%;
+          float: left;
+          padding-right: 0.625rem;
+          padding-left: 0.625rem; } }
+    @media screen and (min-width: 75em) and (min-width: 40em) {
+      .cryodex-chart-wrapper .cryodex-legend else {
+        padding-right: 0.9375rem;
+        padding-left: 0.9375rem; } }
     @media screen and (min-width: 75em) {
-        .cryodex-chart-wrapper .cryodex-legend:last-child:not(:first-child) {
-          float: right; } }
+          .cryodex-chart-wrapper .cryodex-legend else, .cryodex-chart-wrapper .cryodex-legend else:last-child:not(:first-child) {
+            float: left;
+            clear: none; }
+          .cryodex-chart-wrapper .cryodex-legend else:last-child:not(:first-child) {
+            float: right; } }
     .cryodex-chart-wrapper .cryodex-legend ul {
       list-style: none;
       margin: 0; }
@@ -5557,60 +5662,89 @@ a.cryodex-icon:hover {
           text-align: center;
           color: black; }
   .cryodex-chart-wrapper .cryodex-chart {
-    width: 100%;
-    float: left;
-    padding-right: 0.625rem;
-    padding-left: 0.625rem; }
+    width: calc(100% - 1.25rem);
+    margin-right: 0.625rem;
+    margin-left: 0.625rem; }
     .cryodex-chart-wrapper .cryodex-chart div {
       position: relative;
       height: 0;
-      padding-bottom: 100%;
       overflow: hidden; }
       .cryodex-chart-wrapper .cryodex-chart div canvas {
         margin-left: -20%;
         margin-right: -20%; }
+    .cryodex-chart-wrapper .cryodex-chart else {
+      width: 100%;
+      float: left;
+      padding-right: 0.625rem;
+      padding-left: 0.625rem; }
+      @media print, screen and (min-width: 40em) {
+        .cryodex-chart-wrapper .cryodex-chart else {
+          padding-right: 0.9375rem;
+          padding-left: 0.9375rem; } }
+      .cryodex-chart-wrapper .cryodex-chart else, .cryodex-chart-wrapper .cryodex-chart else:last-child:not(:first-child) {
+        float: left;
+        clear: none; }
+      .cryodex-chart-wrapper .cryodex-chart else:last-child:not(:first-child) {
+        float: right; }
     @media print, screen and (min-width: 40em) {
       .cryodex-chart-wrapper .cryodex-chart {
+        width: calc(50% - 1.875rem);
+        margin-right: 0.9375rem;
+        margin-left: 0.9375rem; }
+        .cryodex-chart-wrapper .cryodex-chart else {
+          width: 50%;
+          float: left;
+          padding-right: 0.625rem;
+          padding-left: 0.625rem; } }
+    @media print, screen and (min-width: 40em) and (min-width: 40em) {
+      .cryodex-chart-wrapper .cryodex-chart else {
         padding-right: 0.9375rem;
         padding-left: 0.9375rem; } }
-    .cryodex-chart-wrapper .cryodex-chart:last-child:not(:first-child) {
-      float: right; }
     @media print, screen and (min-width: 40em) {
-      .cryodex-chart-wrapper .cryodex-chart {
-        width: 50%;
-        float: left;
-        padding-right: 0.625rem;
-        padding-left: 0.625rem; } }
-  @media print, screen and (min-width: 40em) and (min-width: 40em) {
-    .cryodex-chart-wrapper .cryodex-chart {
-      padding-right: 0.9375rem;
-      padding-left: 0.9375rem; } }
-    @media print, screen and (min-width: 40em) {
-        .cryodex-chart-wrapper .cryodex-chart:last-child:not(:first-child) {
-          float: right; } }
+          .cryodex-chart-wrapper .cryodex-chart else, .cryodex-chart-wrapper .cryodex-chart else:last-child:not(:first-child) {
+            float: left;
+            clear: none; }
+          .cryodex-chart-wrapper .cryodex-chart else:last-child:not(:first-child) {
+            float: right; } }
     @media print, screen and (min-width: 64em) {
       .cryodex-chart-wrapper .cryodex-chart {
-        width: 66.66667%;
-        float: left;
-        padding-right: 0.625rem;
-        padding-left: 0.625rem; } }
-  @media print, screen and (min-width: 64em) and (min-width: 40em) {
-    .cryodex-chart-wrapper .cryodex-chart {
-      padding-right: 0.9375rem;
-      padding-left: 0.9375rem; } }
+        width: calc(66.66667% - 1.875rem);
+        margin-right: 0.9375rem;
+        margin-left: 0.9375rem; }
+        .cryodex-chart-wrapper .cryodex-chart else {
+          width: 66.66667%;
+          float: left;
+          padding-right: 0.625rem;
+          padding-left: 0.625rem; } }
+    @media print, screen and (min-width: 64em) and (min-width: 40em) {
+      .cryodex-chart-wrapper .cryodex-chart else {
+        padding-right: 0.9375rem;
+        padding-left: 0.9375rem; } }
     @media print, screen and (min-width: 64em) {
-        .cryodex-chart-wrapper .cryodex-chart:last-child:not(:first-child) {
-          float: right; } }
+          .cryodex-chart-wrapper .cryodex-chart else, .cryodex-chart-wrapper .cryodex-chart else:last-child:not(:first-child) {
+            float: left;
+            clear: none; }
+          .cryodex-chart-wrapper .cryodex-chart else:last-child:not(:first-child) {
+            float: right; } }
     @media screen and (min-width: 75em) {
       .cryodex-chart-wrapper .cryodex-chart {
-        width: 75%;
-        float: left;
-        padding-right: 0.625rem;
-        padding-left: 0.625rem; } }
-  @media screen and (min-width: 75em) and (min-width: 40em) {
-    .cryodex-chart-wrapper .cryodex-chart {
-      padding-right: 0.9375rem;
-      padding-left: 0.9375rem; } }
+        width: calc(75% - 1.875rem);
+        margin-right: 0.9375rem;
+        margin-left: 0.9375rem; }
+        .cryodex-chart-wrapper .cryodex-chart else {
+          width: 75%;
+          float: left;
+          padding-right: 0.625rem;
+          padding-left: 0.625rem; } }
+    @media screen and (min-width: 75em) and (min-width: 40em) {
+      .cryodex-chart-wrapper .cryodex-chart else {
+        padding-right: 0.9375rem;
+        padding-left: 0.9375rem; } }
     @media screen and (min-width: 75em) {
-        .cryodex-chart-wrapper .cryodex-chart:last-child:not(:first-child) {
-          float: right; } }
+          .cryodex-chart-wrapper .cryodex-chart else, .cryodex-chart-wrapper .cryodex-chart else:last-child:not(:first-child) {
+            float: left;
+            clear: none; }
+          .cryodex-chart-wrapper .cryodex-chart else:last-child:not(:first-child) {
+            float: right; } }
+
+/*# sourceMappingURL=jquery.cryodex.sample.css.map */
